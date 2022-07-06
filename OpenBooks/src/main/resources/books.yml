@@ -1,29 +1,33 @@
-book:
-  JoinBook:
-    pages:
-      1:
-        "Welcome to minecraft server"
-      2: # You can use placeholders like %username% for the user who is reading this book.
-        "Hello %username%, welcome back to server"
-      3: # You can also add colors
-        "§c§lNo Hacks!!§0"
-      4:
-        "Have a good time in our server!"
-    keepBook: false
-    # If keep book was set true, then in which slot?
-    # THIS WILL REMOVE THE ORIGINAL ITEM THAT WAS IN THAT SLOT!!!
-    bookSlot: 0
-  NewUserBook:
-    pages:
-      1:
-        "Welcome to minecraft server"
-      2: # You can use placeholders like %username% for the user who is reading this book.
-        "Hello %username%, welcome back to server."
-      3: # You can also add colors
-        "§c§lIt seems like you are joining for the first time. Check our website!§0"
-      4:
-        "Have a good time in our server!"
-    keepBook: true
-    # If keep book was set true, then in which slot?
-    # THIS WILL REMOVE THE ORIGINAL ITEM THAT WAS IN THAT SLOT!!!
-    bookSlot: 0
+JoinBook:
+  pages:
+    1:
+      "Welcome to minecraft server"
+    2: # You can use placeholders like %username% for the user who is reading this book.
+      "Hello %username%, welcome back to server"
+    3: # You can also add colors
+      "§c§lNo Hacks!!§0"
+    4:
+      "Have a good time in our server!"
+  keepBook: false
+  # If keep book was set true, then in which slot?
+  # THIS WILL REMOVE THE ORIGINAL ITEM THAT WAS IN THAT SLOT!!!
+  bookSlot: 0
+  title: "JoinBook1"
+  author: "OpenBooks"
+
+NewUserBook:
+  pages:
+    1:
+      "Welcome to minecraft server"
+    2: # You can use placeholders like %username% for the user who is reading this book.
+      "Hello %username%, welcome back to server."
+    3: # You can also add colors
+      "§c§lIt seems like you are joining for the first time. Check our website!§0"
+    4:
+      "Have a good time in our server!"
+  keepBook: true
+  # If keep book was set true, then in which slot?
+  # THIS WILL REMOVE THE ORIGINAL ITEM THAT WAS IN THAT SLOT!!!
+  bookSlot: 0
+  title: "JoinBook2"
+  author: "OpenBooks"
