@@ -46,7 +46,6 @@ public final class OpenBooks extends JavaPlugin {
     try { // Try loading books.yml.
         Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "[OpenBooks] " +
                 ChatColor.WHITE + "Loading books.yml...");
-        Bukkit.getLogger().info(filePath.toString());
         BookReader bookReader = new BookReader(filePath.toString()); // Load books.
         this.bookData = bookReader.getBooks(); // Save loaded books.
     } catch (FileNotFoundException e) { // Meaning that Book.yml could not be loaded.

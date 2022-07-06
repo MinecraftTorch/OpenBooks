@@ -7,13 +7,9 @@
 #       \|_______|\|__|     \|_______|\|__| \|__|\|_______|\|_______|\|_______|\|__| \|__|\_________\
 #                                                                                        \|_________|
 # Open Books when user joins
-
-# Books that OpenBooks should read when the plugin starts
-BooksToLoad: ["JoinBook", "NewUserBook"]
 # Book name that OpenBooks should show player when they join the server
 UserJoinBook: "JoinBook"
 # UserJoinBook: ""  # If you do not want to open a book when user joins
 # Book name that OpenBooks should show player when they join the server for the first time.
 NewUserJoinBook: "NewUserBook"
 # NewUserJoinBook: "" # If you do not want to open a book when user joins the server for the first time.
-# We have en, ko locale. If you can translate, please provide translation

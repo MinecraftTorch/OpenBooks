@@ -46,7 +46,7 @@ public class BookReader {
             Book book = new Book(name, keepBook, bookSlot, pages, title, author); // Generate Book instance.
 
             this.books.put(name, book); // store that information as hashmap
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "[OpenBooks] " + ChatColor.WHITE +
                     "Successfully loaded book : " + ChatColor.GREEN + name);
         }
     }
