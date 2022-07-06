@@ -6,3 +6,4 @@ prefix: OpenBooks
 authors: [ Gooday2die ]
 description: Open book when joining the server
 website: https://github.com/gooday2die/OpenBooks
+softdepend: [PlaceholderAPI]
