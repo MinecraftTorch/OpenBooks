@@ -1,7 +1,7 @@
 # OpenBooks
 Open a book when a user joins.
 
-한국인 분들은 [이 문서](https://github.com/gooday2die/OpenBooks/README_KR.md)를 봐주세요!
+한국인 분들은 [이 문서](https://github.com/gooday2die/OpenBooks/blob/main/README_KR.md)를 봐주세요!
 
 ## Features
 - Automatically opens books when a user joins server
