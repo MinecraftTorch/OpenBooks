@@ -21,7 +21,6 @@ import java.util.Map;
  */
 public class BookEventHandler implements Listener {
     private final Map<String, Book> bookData; // A map object that is for storing books
-
     /**
      * A constructor method for class BookEventHandler.
      * @param bookData the Map that represents book data.
@@ -37,21 +36,26 @@ public class BookEventHandler implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer(); // get player
-        Book curBookData;
+        Book curBookData = null;
 
         if (player.hasPermission("openbooks.bypass")) return; // if user has permission openbooks.bypass, don't open book.
 
         if (player.hasPlayedBefore()) { // if player joined before, use UserJoinBook config.
-            curBookData = this.bookData.get(ConfigValues.UserJoinBook); // get curBookData
+            if (ConfigValues.UserJoinBook.isEmpty()) return; // When empty, do not show book.
+            else if (this.bookData.containsKey(ConfigValues.UserJoinBook)) // When book was found
+                curBookData = this.bookData.get(ConfigValues.UserJoinBook); // get curBookData
+            else // When book was not found, let console know
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
+                        "Could not find " + ChatColor.RED + ConfigValues.UserJoinBook);
         } else { // if player is first time visiting, use NewUserJoinBook config.
-            curBookData = this.bookData.get(ConfigValues.NewUserJoinBook);
+            if (ConfigValues.NewUserJoinBook.isEmpty()) return; // When empty, do not show book.
+            else if (this.bookData.containsKey(ConfigValues.NewUserJoinBook))
+                curBookData = this.bookData.get(ConfigValues.NewUserJoinBook); // get curBookData
+            else
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
+                        "Could not find " + ChatColor.RED + ConfigValues.NewUserJoinBook);
         }
-
-        if (curBookData == null) { // If book data was null, which means the book name was invalid
-            // let console know
-            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
-                    "Could not find " + ChatColor.RED + ConfigValues.NewUserJoinBook);
-        } else { // If it was valid, generate book.
+        if (curBookData != null) { // If it was valid, generate book.
             ItemStack book = this.generateBook(curBookData.pages, curBookData.title, curBookData.author, event);
             Inventory inventory = player.getInventory(); // Copy user's inventory
             if (curBookData.keepBook) { // If keepBook was set,
