@@ -1,0 +1,8 @@
+name: OpenBooks
+version: '${project.version}'
+main: net.gooday2die.openbooks.OpenBooks
+api-version: 1.19
+prefix: OpenBooks
+authors: [ Gooday2die ]
+description: Open book when joining the server
+website: https://github.com/gooday2die/OpenBooks
