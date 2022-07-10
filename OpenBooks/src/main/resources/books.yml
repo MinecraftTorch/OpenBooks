@@ -1,10 +1,8 @@
-# Placeholders
-# You can use %username% to set user's name who is reading this book.
-
-
+# You can use PlaceHolderAPI placeholders if you want!
 JoinBook:
   pages:
     [
+      # Pages are split by , commas
       "Welcome to minecraft server",
       "Hello %player_displayname%, welcome back to server",
       "§c§lNo Hacks!!§0",

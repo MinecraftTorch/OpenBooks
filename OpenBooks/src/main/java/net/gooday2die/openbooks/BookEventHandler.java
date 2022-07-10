@@ -20,15 +20,6 @@ import java.util.Map;
  * A class that is for handling player join events for OpenBooks.
  */
 public class BookEventHandler implements Listener {
-    private final Map<String, Book> bookData; // A map object that is for storing books
-    /**
-     * A constructor method for class BookEventHandler.
-     * @param bookData the Map that represents book data.
-     */
-    public BookEventHandler(Map<String, Book> bookData) {
-        this.bookData = bookData;
-    }
-
     /**
      * A method that handles player join events for OpenBooks.
      * @param event The PlayerJoinEvent instance.
@@ -42,15 +33,15 @@ public class BookEventHandler implements Listener {
 
         if (player.hasPlayedBefore()) { // if player joined before, use UserJoinBook config.
             if (ConfigValues.UserJoinBook.isEmpty()) return; // When empty, do not show book.
-            else if (this.bookData.containsKey(ConfigValues.UserJoinBook)) // When book was found
-                curBookData = this.bookData.get(ConfigValues.UserJoinBook); // get curBookData
+            else if (ConfigValues.bookData.containsKey(ConfigValues.UserJoinBook)) // When book was found
+                curBookData = ConfigValues.bookData.get(ConfigValues.UserJoinBook); // get curBookData
             else // When book was not found, let console know
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
                         "Could not find " + ChatColor.RED + ConfigValues.UserJoinBook);
         } else { // if player is first time visiting, use NewUserJoinBook config.
             if (ConfigValues.NewUserJoinBook.isEmpty()) return; // When empty, do not show book.
-            else if (this.bookData.containsKey(ConfigValues.NewUserJoinBook))
-                curBookData = this.bookData.get(ConfigValues.NewUserJoinBook); // get curBookData
+            else if (ConfigValues.bookData.containsKey(ConfigValues.NewUserJoinBook))
+                curBookData = ConfigValues.bookData.get(ConfigValues.NewUserJoinBook); // get curBookData
             else
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
                         "Could not find " + ChatColor.RED + ConfigValues.NewUserJoinBook);
