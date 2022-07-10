@@ -140,6 +140,9 @@ public class CommandHandler implements CommandExecutor {
                     if (!player.hasPermission("openbooks.bypass")) {
                         Book curBookData = ConfigValues.bookData.get(bookName);
                         this.openBook(curBookData, player); // generate book
+                        sender.sendMessage(ChatColor.GOLD + "[OpenBooks] " + ChatColor.WHITE +
+                                "Successfully opened " + ChatColor.GREEN + bookName + ChatColor.WHITE +
+                                " to " + ChatColor.GREEN + targetPlayer); // let them know it was successful.
                     }
                 }
             } else { // if this was for specific user
@@ -216,7 +219,7 @@ public class CommandHandler implements CommandExecutor {
      */
     private void help(CommandSender sender) {
         sender.sendMessage(ChatColor.GOLD + "--------=[OpenBooks]=--------");
-        sender.sendMessage(ChatColor.GREEN + "/openbooks reload" + ChatColor.WHITE + " : reloads books.yml and config.yml");
-        sender.sendMessage(ChatColor.GREEN + "/openbooks open bookname username" + ChatColor.WHITE + " : open book to specific user");
+        sender.sendMessage(ChatColor.GREEN + "- /openbooks reload" + ChatColor.WHITE + " : reloads books.yml and config.yml");
+        sender.sendMessage(ChatColor.GREEN + "- /openbooks open bookname username" + ChatColor.WHITE + " : open book to specific user");
     }
 }
