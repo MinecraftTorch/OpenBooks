@@ -1,3 +1,4 @@
+
 # OpenBooks KR
 유저가 서버에 방문하면 자동으로 책을 읽게합니다.
 
@@ -9,6 +10,7 @@ For non Koreans, please check [here](https://github.com/gooday2die/OpenBooks/REA
 - [PlaceHolderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI) 를 지원합니다
 - 책을 다양하게 설정할 수 있습니다.
 - 한국어 완벽 지원
+- 간단한 명령어로 책 읽어주기
 
 ## 다운로드
 [Release Section](https://github.com/gooday2die/OpenBooks/releases/new) 을 확인해주세요
@@ -23,6 +25,16 @@ For non Koreans, please check [here](https://github.com/gooday2die/OpenBooks/REA
 ### 책 안읽는 권한을 줬을 때 예시
 `openbooks.bypass` 퍼미션 노드를 부여하면 책을 읽지 않고 서버에 접속합니다.
 ![Bypass](https://github.com/gooday2die/OpenBooks/blob/main/github/pics/2.gif?raw=true)
+
+## Commands 
+- `/openbooks help` : OpenBooks 도움말을 표시합니다.
+- `/openbooks reload`: `books.yml` 과`config.yml` 를 reload 합니다.
+- `/openbooks open bookname touser`: 다른 유저에게 책을 읽게합니다. 예시: `/openbooks open JoinBook Gooday2die` or `/openbooks open JoinBook ALL` 을 사용하시면 서버에 접속중인 모든 유저에게 책을 읽어줍니다. 만일 `openbooks.bypass` 퍼미션을 가진 유저라면 책을 읽어주지 않습니다.
+
+## Permissions
+- `openbooks.bypass`: 책 읽어주는 기능을 생략합니다.
+- `openbooks.reload`: `/openbooks reload` 을 위한 permission 입니다
+- `openbooks.openbookto`: `/openbooks open bookname touser` 을 위한 permission 입니다
 
 ## Config.yml
 ```
