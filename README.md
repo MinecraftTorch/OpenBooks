@@ -1,3 +1,4 @@
+
 # OpenBooks
 Open a book when a user joins.
 
@@ -8,6 +9,7 @@ Open a book when a user joins.
 - Can open different books to new comers
 - Supports [PlaceHolderAPI](https://github.com/PlaceholderAPI/PlaceholderAPI)
 - Configurable books
+- Open books to users by simple command
 
 ## Download
 Check [Release Section](https://github.com/gooday2die/OpenBooks/releases/new) for more
@@ -22,6 +24,16 @@ Check [Release Section](https://github.com/gooday2die/OpenBooks/releases/new) fo
 ### When you have permission to bypass
 `openbooks.bypass` gives you permissin to bypass books.
 ![Bypass](https://github.com/gooday2die/OpenBooks/blob/main/github/pics/2.gif?raw=true)
+
+## Commands 
+- `/openbooks help` : Prints out the help message for OpenBooks.
+- `/openbooks reload`: Reloads `books.yml` and `config.yml` from plugin directory.
+- `/openbooks open bookname touser`: Opens book to user. Example: `/openbooks open JoinBook Gooday2die` or `/openbooks open JoinBook ALL` for all users online. If somebody has `openbooks.bypass` they will not be receiving books.
+
+## Permissions
+- `openbooks.bypass`: Will not open books to users having this permission
+- `openbooks.reload`: for `/openbooks reload`
+- `openbooks.openbookto`: for `/openbooks open bookname touser`
 
 ## Config.yml
 ```
@@ -81,7 +93,6 @@ NewUserBook:
 - dev.gooday2die@gmail.com for contacts.
 
 ## Todo
-
- - [ ] Add feature that users can open books to another user.
+ - [ ] Announcement in every intervals
  - [ ] Random book opens when user joins server
  - [ ] Anything you guys want!
