@@ -58,7 +58,6 @@ public class CommandHandler implements CommandExecutor {
             try { // try getting the argument information
                 int argCount = this.commandList.get(args[0]); // get argument count;
                 if (argCount == args.length - 1) { // if argument was valid, then execute command
-                    System.out.println("valid");
                     if (Objects.equals(args[0], "reload")) { // if label was reload
                         this.reloadBooks(sender);  // execute reload
                     }
@@ -81,7 +80,9 @@ public class CommandHandler implements CommandExecutor {
     private void reloadBooks(CommandSender sender) {
         // get absolute path for books.yml
         Path filePath = Paths.get(this.plugin.getDataFolder().getAbsolutePath(), "books.yml");
+        this.plugin.reloadConfig(); // reload config
         FileConfiguration config = this.plugin.getConfig(); // Load config
+
         try { // try loading config.yml
             ConfigValues.bookName = config.getStringList("JoinBook");
             ConfigValues.NewUserJoinBook = config.getString("NewUserJoinBook");
