@@ -44,7 +44,7 @@ public class BookEventHandler implements Listener {
                 curBookData = ConfigValues.bookData.get(ConfigValues.NewUserJoinBook); // get curBookData
             else
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " + ChatColor.WHITE +
-                        "Could not find " + ChatColor.RED + ConfigValues.NewUserJoinBook);
+                        "Could not find book name : " + ChatColor.GREEN + ConfigValues.NewUserJoinBook);
         }
         if (curBookData != null) { // If it was valid, generate book.
             ItemStack book = this.generateBook(curBookData.pages, curBookData.title, curBookData.author, event);
