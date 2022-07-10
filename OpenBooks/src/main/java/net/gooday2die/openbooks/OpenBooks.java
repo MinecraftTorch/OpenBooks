@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.yaml.snakeyaml.parser.ParserException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,8 +17,6 @@ import java.util.Map;
  * A class that extens JavaPlugin for OpenBooks.
  */
 public final class OpenBooks extends JavaPlugin {
-    private Map<String, Book> bookData; // The book data.
-
     /**
      * Override for onEnable();
      */
@@ -39,22 +38,29 @@ public final class OpenBooks extends JavaPlugin {
             Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "[OpenBooks] " +
                     ChatColor.WHITE + "Found PlaceHolderAPI!");
 
-        ConfigValues.bookName = config.getStringList("JoinBook");
-        ConfigValues.NewUserJoinBook = config.getString("NewUserJoinBook");
-        ConfigValues.UserJoinBook = config.getString("UserJoinBook");
+        try { // try loading config.yml
+            ConfigValues.bookName = config.getStringList("JoinBook");
+            ConfigValues.NewUserJoinBook = config.getString("NewUserJoinBook");
+            ConfigValues.UserJoinBook = config.getString("UserJoinBook");
+        } catch (ParserException e) { // If anything was wrong, pop up error message
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " +
+                    ChatColor.WHITE + "Could not load config.yml. Please check config.yml");
+            e.printStackTrace();
+        }
+        try { // Try loading books.yml.
+            BookReader bookReader = new BookReader(filePath.toString()); // Load books.
+            ConfigValues.bookData = bookReader.getBooks(); // Save loaded books.
+        } catch (FileNotFoundException e) { // If anything was wrong, pop up error message
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[OpenBooks] " +
+                    ChatColor.WHITE + "Could not load books.yml. Please check books.yml");
+            e.printStackTrace();
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
 
-    try { // Try loading books.yml.
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "[OpenBooks] " +
-                ChatColor.WHITE + "Loading books.yml...");
-        BookReader bookReader = new BookReader(filePath.toString()); // Load books.
-        this.bookData = bookReader.getBooks(); // Save loaded books.
-    } catch (FileNotFoundException e) { // Meaning that Book.yml could not be loaded.
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "[OpenBooks] " +
-                ChatColor.WHITE + "Could not load books.yml. Please check its contents.");
-        this.getPluginLoader().disablePlugin(this); // disable plugin since books.yml could not be loaded.
-    }
+    getCommand("openbooks").setExecutor(new CommandHandler(this));
+    getCommand("ob").setExecutor(new CommandHandler(this));
 
-    getServer().getPluginManager().registerEvents(new BookEventHandler(this.bookData), this); // register events for bypassing.
+    getServer().getPluginManager().registerEvents(new BookEventHandler(), this); // register events for bypassing.
 }
 
     @Override
