@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 
 
 /**
@@ -39,7 +38,6 @@ public final class OpenBooks extends JavaPlugin {
                     ChatColor.WHITE + "Found PlaceHolderAPI!");
 
         try { // try loading config.yml
-            ConfigValues.bookName = config.getStringList("JoinBook");
             ConfigValues.NewUserJoinBook = config.getString("NewUserJoinBook");
             ConfigValues.UserJoinBook = config.getString("UserJoinBook");
         } catch (ParserException e) { // If anything was wrong, pop up error message

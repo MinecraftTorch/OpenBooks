@@ -7,10 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -35,8 +32,10 @@ public class BookReader {
      */
     public void read(){
         Set<String> bookNames = this.bookData.getKeys(false); // Get book names
+        ConfigValues.bookName = new ArrayList<>(bookNames); // dump book names to ConfigValues
 
         for (String name : bookNames) { // for all book names
+
             String title = (String) this.bookData.get(name + ".title"); // get title
             String author = (String) this.bookData.get(name + ".author"); // get author
             List<String> pages = this.bookData.getStringList(name + ".pages"); // get pages
